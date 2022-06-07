@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="movie"
+            type="com.mypro.moviedb.data.model.Movie" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
+        android:layout_marginHorizontal="20dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="3dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp">
+
+            <ImageView
+                android:id="@+id/img"
+                android:layout_width="150dp"
+                android:layout_height="120dp"
+                android:contentDescription="@{movie.title}"
+                android:scaleType="centerCrop"
+                app:imageUrl="@{movie.image}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/TextView.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@{movie.title}"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Avatar" />
+
+            <TextView
+                android:id="@+id/tv_release_year"
+                style="@style/TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@{movie.releaseYear}"
+                android:textColor="@color/blue_700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@id/tv_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:text="2022" />
+
+            <TextView
+                android:id="@+id/tv_rating"
+                style="@style/TextView.Medium"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="4dp"
+                android:gravity="center"
+                android:text="@{String.valueOf(movie.rating)}"
+                android:textColor="@color/yellow_900"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ic_star"
+                app:drawableTint="@color/yellow_700"
+                app:layout_constraintStart_toStartOf="@id/tv_release_year"
+                app:layout_constraintTop_toBottomOf="@id/tv_release_year"
+                tools:text="6.6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>
